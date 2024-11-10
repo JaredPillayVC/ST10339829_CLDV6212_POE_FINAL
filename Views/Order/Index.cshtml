@@ -1,0 +1,52 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "Order Messages";
+}
+
+<div class="container">
+    <h2 class="my-4 text-center">Order Processing</h2>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Add New Order</h5>
+            <form asp-action="ProcessOrder" method="post">
+                <div class="form-group">
+                    <label for="order">Order Details:</label>
+                    <input type="text" name="order" id="order" class="form-control" placeholder="Enter order details" required />
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Add Order</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Orders in Queue</h5>
+        </div>
+        <div class="card-body">
+            @if (Model != null && Model.Count > 0)
+            {
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Order Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var message in Model)
+                        {
+                            <tr>
+                                <td>@message</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-info">No orders found in the queue.</div>
+            }
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Image Upload";
+    var imageUrls = ViewBag.ImageUrls as List<string>;
+}
+
+<h2>Image Upload</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<form asp-action="UploadImageIndex" asp-controller="Image" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="formFile">Select an image to upload:</label>
+        <input type="file" name="formFile" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Upload Image</button>
+</form>
+
+<hr />
+
+<h3>Uploaded Images</h3>
+
+@if (imageUrls != null && imageUrls.Count > 0)
+{
+    <ul class="list-group">
+        @foreach (var url in imageUrls)
+        {
+            <li class="list-group-item">
+                <img src="@url" alt="Uploaded Image" style="max-width: 200px; max-height: 200px;" class="img-thumbnail" />
+                <br />
+                <a href="@url" target="_blank">@url</a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No images have been uploaded yet.</p>
+}
