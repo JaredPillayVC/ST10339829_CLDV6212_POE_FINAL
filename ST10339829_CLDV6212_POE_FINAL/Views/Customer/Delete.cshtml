@@ -1,4 +1,4 @@
-﻿@model Customer
+﻿@model ST10339829_CLDV6212_POE_FINAL.Models.Customer
 
 <h2>Delete Customer</h2>
 
@@ -8,11 +8,10 @@
     <strong>Name:</strong> @Model.Name <br />
     <strong>Phone:</strong> @Model.Phone <br />
     <strong>Email:</strong> @Model.Email <br />
-    <strong>Address:</strong> @Model.Address
 </div>
 
 <form asp-action="Delete" method="post">
-    <input type="hidden" asp-for="RowKey" />
+    <input type="hidden" asp-for="CustomerID" />
     <button type="submit" class="btn btn-danger">Delete</button>
     <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
 </form>

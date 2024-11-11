@@ -6,13 +6,12 @@ namespace ST10339829_CLDV6212_POE_FINAL.Models
 {
     public class Customer : TableEntity
     {
-        [Required]
-        public int? CID { get; set; }
+       
+        public int? CustomerID { get; set; }
 
         public string Name { get; set; }
-        public string Phone { get; set; }
         public string Email { get; set; }
-        public string Address { get; set; }
+        public string Phone { get; set; }
 
         public Customer()
         {
@@ -21,13 +20,13 @@ namespace ST10339829_CLDV6212_POE_FINAL.Models
 
         public void SetRowKey()
         {
-            if (!CID.HasValue)
+            if (!CustomerID.HasValue)
             {
                 RowKey = Guid.NewGuid().ToString();
             }
             else
             {
-                RowKey = CID.ToString();
+                RowKey = CustomerID.ToString();
             }
         }
     }

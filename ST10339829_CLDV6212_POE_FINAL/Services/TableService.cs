@@ -22,7 +22,7 @@ namespace ST10339829_CLDV6212_POE_FINAL.Services
 
         public async Task AddCustomerTableAsync(Customer customer)
         {
-            customer.CID = await GetNextCIDAsync();
+            customer.CustomerID = await GetNextCIDAsync();
 
             customer.SetRowKey();
 
@@ -46,10 +46,10 @@ namespace ST10339829_CLDV6212_POE_FINAL.Services
         private async Task<int> GetNextCIDAsync()
         {
             var query = new TableQuery<Customer>()
-                .Select(new string[] { "CID" });
+                .Select(new string[] { "CustomerID" });
 
             var customers = await _customerCloudTable.ExecuteQuerySegmentedAsync(query, null);
-            var maxCID = customers.Results.Max(c => c.CID.HasValue ? c.CID.Value : 0);
+            var maxCID = customers.Results.Max(c => c.CustomerID.HasValue ? c.CustomerID.Value : 0);
             return maxCID + 1;
         }
 
@@ -75,7 +75,7 @@ namespace ST10339829_CLDV6212_POE_FINAL.Services
         private async Task<int> GetNextPIDAsync()
         {
             var query = new TableQuery<Product>()
-                .Select(new string[] { "PID" });
+                .Select(new string[] { "ProductID" });
             var product = await _productCloudTable.ExecuteQuerySegmentedAsync(query, null);
             var maxPID = product.Results.Max(c => c.ProductID.HasValue ? c.ProductID.Value : 0);
             return maxPID + 1;
