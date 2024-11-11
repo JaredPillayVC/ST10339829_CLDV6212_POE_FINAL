@@ -1,0 +1,82 @@
+﻿@model List<ST10339829_CLDV6212_POE_FINAL.Models.Order>
+@{
+    ViewBag.Title = "Order Processing";
+}
+
+<div class="container">
+    <h2 class="my-4 text-center">Order Processing</h2>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Add New Order</h5>
+            <form asp-action="Index" method="post">
+                <div class="form-group">
+                    <label for="CustomerID">Customer ID:</label>
+                    <input type="number" name="CustomerID" id="CustomerID" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductID">Product ID:</label>
+                    <input type="number" name="ProductID" id="ProductID" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="Quantity">Quantity:</label>
+                    <input type="number" name="Quantity" id="Quantity" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="OrderDate">Order Date:</label>
+                    <input type="datetime-local" name="OrderDate" id="OrderDate" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="TotalAmount">Total Amount:</label>
+                    <input type="number" step="0.01" name="TotalAmount" id="TotalAmount" class="form-control" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2">Add Order</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Orders</h5>
+        </div>
+        <div class="card-body">
+            @if (Model != null && Model.Count > 0)
+            {
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer ID</th>
+                            <th>Product ID</th>
+                            <th>Order Date</th>
+                            <th>Quantity</th>
+                            <th>Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+                                <td>@order.OrderID</td>
+                                <td>@order.CustomerID</td>
+                                <td>@order.ProductID</td>
+                                <td>@order.OrderDate</td>
+                                <td>@order.Quantity</td>
+                                <td>@order.TotalAmount.ToString("C")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-info">No orders found.</div>
+            }
+        </div>
+    </div>
+</div>

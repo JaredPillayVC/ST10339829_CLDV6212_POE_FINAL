@@ -55,7 +55,7 @@ namespace ST10339829_CLDV6212_POE_FINAL.Services
 
         public async Task AddProductTableAsync(Product product)
         {
-            product.PID = await GetNextPIDAsync();
+            product.ProductID = await GetNextPIDAsync();
 
             product.SetRowKey();
 
@@ -77,7 +77,7 @@ namespace ST10339829_CLDV6212_POE_FINAL.Services
             var query = new TableQuery<Product>()
                 .Select(new string[] { "PID" });
             var product = await _productCloudTable.ExecuteQuerySegmentedAsync(query, null);
-            var maxPID = product.Results.Max(c => c.PID.HasValue ? c.PID.Value : 0);
+            var maxPID = product.Results.Max(c => c.ProductID.HasValue ? c.ProductID.Value : 0);
             return maxPID + 1;
         }
     }

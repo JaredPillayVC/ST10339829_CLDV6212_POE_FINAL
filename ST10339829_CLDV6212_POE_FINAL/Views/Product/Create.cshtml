@@ -1,23 +1,23 @@
-﻿@model Product
+﻿@model ST10339829_CLDV6212_POE_FINAL.Models.Product
 
 <h2>Create Product</h2>
 
 <form asp-action="Create" method="post">
     <div class="form-group">
         <label>Product ID</label>
-        <input asp-for="PID" class="form-control" required />
+        <input asp-for="ProductID" class="form-control" required />
     </div>
     <div class="form-group">
         <label>Product Name</label>
         <input asp-for="Name" class="form-control" required />
     </div>
     <div class="form-group">
-        <label>Description</label>
-        <input asp-for="Description" class="form-control" required />
-    </div>
-    <div class="form-group">
         <label>Price</label>
         <input asp-for="Price" class="form-control" type="number" step="0.01" required />
+    </div>
+    <div class="form-group">
+        <label>Stock</label>
+        <input asp-for="Stock" class="form-control" type="number" required />
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
 </form>

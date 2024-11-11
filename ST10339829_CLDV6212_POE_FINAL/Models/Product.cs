@@ -1,5 +1,4 @@
 ﻿using Microsoft.Azure.Cosmos.Table;
-using Microsoft.Azure.Documents;
 using System.ComponentModel.DataAnnotations;
 
 namespace ST10339829_CLDV6212_POE_FINAL.Models
@@ -7,11 +6,16 @@ namespace ST10339829_CLDV6212_POE_FINAL.Models
     public class Product : TableEntity
     {
         [Required]
-        public int? PID { get; set; }
+        public int? ProductID { get; set; }  
 
+        [Required]
         public string Name { get; set; }
-        public string Description { get; set; }
+
+        [Required]
         public double Price { get; set; }
+
+        [Required]
+        public int Stock { get; set; }  
 
         public Product()
         {
@@ -20,13 +24,13 @@ namespace ST10339829_CLDV6212_POE_FINAL.Models
 
         public void SetRowKey()
         {
-            if (!PID.HasValue)
+            if (!ProductID.HasValue)
             {
                 RowKey = Guid.NewGuid().ToString();
             }
             else
             {
-                RowKey = PID.ToString();
+                RowKey = ProductID.ToString();
             }
         }
     }

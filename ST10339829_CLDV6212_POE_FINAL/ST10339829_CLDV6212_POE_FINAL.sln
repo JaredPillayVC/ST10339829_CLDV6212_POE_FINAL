@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ST10339829_CLDV6212_POE_FINAL", "ST10339829_CLDV6212_POE_FINAL.csproj", "{EE42D9E8-110E-4D9E-BD3F-51C7FE1B0E58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ST10339829_CLDV6212_POE_FINAL", "ST10339829_CLDV6212_POE_FINAL.csproj", "{EE42D9E8-110E-4D9E-BD3F-51C7FE1B0E58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzFunctionApp", "..\AzFunctionApp\AzFunctionApp.csproj", "{094A9800-4806-403D-B5D8-E68A41FE42DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EE42D9E8-110E-4D9E-BD3F-51C7FE1B0E58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE42D9E8-110E-4D9E-BD3F-51C7FE1B0E58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE42D9E8-110E-4D9E-BD3F-51C7FE1B0E58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{094A9800-4806-403D-B5D8-E68A41FE42DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{094A9800-4806-403D-B5D8-E68A41FE42DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{094A9800-4806-403D-B5D8-E68A41FE42DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{094A9800-4806-403D-B5D8-E68A41FE42DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
