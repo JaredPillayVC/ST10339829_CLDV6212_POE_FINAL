@@ -13,7 +13,6 @@ namespace AzFunctionApp.Functions
 {
     public static class UploadContractFunction
     {
-        // TODO: Connection String to be updated with new storage acc 
         private static string connectionString = "DefaultEndpointsProtocol=https;AccountName=st10339829;AccountKey=b1RzjUhuhot2MIrD+6YOgiT2AMeWOX5b5ILd6ROUzt30pD8LVb7GnwPAGKeuP3nPyRX8lGmlwVr2+AStHgokZw==;EndpointSuffix=core.windows.net";
         private static string shareName = "contracts";
 

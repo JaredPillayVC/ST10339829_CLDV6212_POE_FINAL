@@ -20,7 +20,6 @@ public class OrderController : Controller
 
     public async Task<IActionResult> Index()
     {
-        // Fetch the list of orders as List<Order> instead of List<string>
         List<Order> orders = (await _orderRepository.GetOrdersAsync()).ToList();
         return View(orders);
     }
@@ -28,15 +27,13 @@ public class OrderController : Controller
     [HttpPost]
     public async Task<IActionResult> Index(Order order)
     {
-        // Check if the provided CustomerID exists
         bool customerExists = await _customerRepository.CustomerExistsAsync(order.CustomerID);
         if (!customerExists)
         {
             ModelState.AddModelError("CustomerID", "The specified Customer ID does not exist.");
             List<Order> orders = (await _orderRepository.GetOrdersAsync()).ToList();
-            return View("Index", orders); // Explicitly return the Index view
+            return View("Index", orders); 
         }
-        // Check if the provided ProductID exists
         bool productExists = await _productRepository.ProductExistsAsync(order.ProductID);
         if (!productExists)
         {
@@ -50,9 +47,8 @@ public class OrderController : Controller
             return RedirectToAction(nameof(Index));
         }
 
-        // Return to the Index view with current orders if there are validation errors
         List<Order> currentOrders = (await _orderRepository.GetOrdersAsync()).ToList();
-        return View("Index", currentOrders); // Explicitly specify "Index" here as well
+        return View("Index", currentOrders); 
     }
 }
 

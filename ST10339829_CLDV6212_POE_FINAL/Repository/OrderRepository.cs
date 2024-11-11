@@ -18,7 +18,6 @@ public class OrderRepository
     {
         using (IDbConnection db = new SqlConnection(_connectionString))
         {
-            // Retrieve all orders with relevant fields
             return await db.QueryAsync<Order>("SELECT OrderID, CustomerID, ProductID, OrderDate, Quantity, TotalAmount FROM [Order]");
         }
     }
@@ -27,7 +26,6 @@ public class OrderRepository
     {
         using (IDbConnection db = new SqlConnection(_connectionString))
         {
-            // SQL query includes all columns for the new Order model
             string sql = @"
                 INSERT INTO [Order] (CustomerID, ProductID, OrderDate, Quantity, TotalAmount) 
                 VALUES (@CustomerID, @ProductID, @OrderDate, @Quantity, @TotalAmount)";
@@ -49,7 +47,6 @@ public class OrderRepository
     {
         using (IDbConnection db = new SqlConnection(_connectionString))
         {
-            // Update query to modify all columns except OrderID
             string sql = @"
                 UPDATE [Order]
                 SET CustomerID = @CustomerID,

@@ -20,14 +20,12 @@ namespace AzFunctionApp.Functions
             _blobService = blobService;
         }
 
-        // Define the route as '/upload-image' and allow POST requests
         [FunctionName("UploadImage")]
         public async Task<IActionResult> UploadImageToBlob(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = "upload-image")] HttpRequest req, ILogger log)
         {
             log.LogInformation("Image upload to Blob Storage function triggered.");
 
-            // Read the form data for the uploaded file
             var formData = await req.ReadFormAsync();
             var file = formData.Files.GetFile("file");
 
@@ -39,7 +37,6 @@ namespace AzFunctionApp.Functions
 
             try
             {
-                // Call the AzureBlobService to handle the upload
                 await _blobService.UploadImageAsync(file);
                 log.LogInformation($"Image '{file.FileName}' uploaded successfully.");
                 return new OkObjectResult($"Image '{file.FileName}' uploaded successfully.");
@@ -47,7 +44,7 @@ namespace AzFunctionApp.Functions
             catch (System.Exception ex)
             {
                 log.LogError($"Error uploading image: {ex.Message}");
-                return new StatusCodeResult(500); // Internal Server Error
+                return new StatusCodeResult(500); 
             }
         }
     }

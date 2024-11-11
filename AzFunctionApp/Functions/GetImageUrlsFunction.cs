@@ -28,10 +28,8 @@ namespace AzFunctionApp.Functions
 
             try
             {
-                // Retrieve image URLs from the AzureBlobService
                 var imageUrls = await _blobService.GetFilesAsync();
 
-                // Check if there are any images in the container
                 if (imageUrls == null || imageUrls.Count == 0)
                 {
                     log.LogInformation("No images found in the blob storage.");
@@ -43,7 +41,7 @@ namespace AzFunctionApp.Functions
             catch (System.Exception ex)
             {
                 log.LogError($"Error fetching image URLs: {ex.Message}");
-                return new StatusCodeResult(500); // Internal Server Error
+                return new StatusCodeResult(500); 
             }
         }
     }

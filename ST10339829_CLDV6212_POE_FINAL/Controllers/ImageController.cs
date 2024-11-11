@@ -60,7 +60,6 @@ namespace ST10339829_CLDV6212_POE_FINAL.Controllers
             return RedirectToAction("Index");
         }
 
-        // Upload image to Azure Function via HTTP request
         public async Task<string> UploadImageToFunctionAsync(IFormFile image, string imageName)
         {
             var uploadUrl = $"{_azureFunctionBaseUrl}upload-image?code={_uploadImageKey}";
@@ -81,7 +80,6 @@ namespace ST10339829_CLDV6212_POE_FINAL.Controllers
             }
         }
 
-        // Retrieve image URLs from Azure Function via HTTP request
         public async Task<List<string>> GetImageUrlsAsync()
         {
             var getUrl = $"{_azureFunctionBaseUrl}get-image-urls?code={_getImageKey}";

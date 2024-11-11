@@ -30,7 +30,7 @@ namespace AzFunctionApp.Functions
                 if (entityType.ToLower() == "customer")
                 {
                     var customer = JsonConvert.DeserializeObject<Customer>(requestBody);
-                    customer.SetRowKey(); // Set RowKey for the customer
+                    customer.SetRowKey(); 
                     CloudTable customerTable = tableClient.GetTableReference("Customers");
                     await customerTable.CreateIfNotExistsAsync();
 
@@ -42,7 +42,7 @@ namespace AzFunctionApp.Functions
                 else if (entityType.ToLower() == "product")
                 {
                     var product = JsonConvert.DeserializeObject<Product>(requestBody);
-                    product.SetRowKey(); // Set RowKey for the product
+                    product.SetRowKey(); 
                     CloudTable productTable = tableClient.GetTableReference("Products");
                     await productTable.CreateIfNotExistsAsync();
 
@@ -86,7 +86,6 @@ namespace AzFunctionApp.Functions
                     return new NotFoundResult();
                 }
 
-                // Explicitly cast the result to the appropriate entity
                 if (entityType.ToLower() == "customer")
                 {
                     var customer = result.Result as Customer;
